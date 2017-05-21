@@ -6,7 +6,7 @@ from datetime import date, datetime
 from email.mime.base import MIMEBase
 from email.utils import parseaddr
 try:
-    from urlparse import urljoin  # python 2
+    from urllib.parse import urljoin  # python 2
 except ImportError:
     from urllib.parse import urljoin  # python 3
 
@@ -446,7 +446,7 @@ class DjrillBackend(BaseEmailBackend):
         # b64encode requires bytes, so let's convert our content.
         try:
             # noinspection PyUnresolvedReferences
-            if isinstance(content, unicode):
+            if isinstance(content, str):
                 # Python 2.X unicode string
                 content = content.encode(str_encoding)
         except NameError:

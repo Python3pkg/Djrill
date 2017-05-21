@@ -31,7 +31,7 @@ class DjrillError(Exception):
             self.describe_send(),
             self.describe_response(),
         ]
-        return "\n".join(filter(None, parts))
+        return "\n".join([_f for _f in parts if _f])
 
     def describe_send(self):
         """Return a string describing the Mandrill send in self.payload, or None"""
